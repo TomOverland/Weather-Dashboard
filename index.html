@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather Dashboard</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
@@ -14,6 +14,7 @@
       src="https://kit.fontawesome.com/70fcd40144.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="assets\style.css">
   </head>
   <body>
     <script
@@ -26,6 +27,13 @@
       <div class="row">
         <div class="col bg-dark text-light">
           <h1>Weather Dashboard</h1>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <div class="notification">NOTIFICATIONS GO HERE</div>
         </div>
       </div>
     </div>
@@ -43,7 +51,9 @@
         <div class="col-8">
           <h2>CITY NAME</h2>
           <!--Change degrees fahrenheit with javascript, figure out how to make degree *circle-->
-          <p>Temperature: <span class="degrees"></span>*F</p>
+          <div class="temperature-value"><p>
+            Temperature:- *<span>F</span>
+          </p></div>
           <p>Humidity: <span class="humidity"></span>%</p>
           <p>Wind Speed: <span class="windSpeed"></span> MPH</p>
           <p>UV Index: <span class="uv"></span></p>
@@ -53,7 +63,7 @@
         <div class="col-8">
           <h3>5-Day Forecast:</h3>
           <!--5 day / 3 hour forecast from openweathermap.org-->
-          <p></p>
+          <div></div>
         </div>
       </div>
     </div>
@@ -69,5 +79,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="assets/script.js"></script>
   </body>
 </html>
