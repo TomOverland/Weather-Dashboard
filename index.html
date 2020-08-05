@@ -14,7 +14,7 @@
       src="https://kit.fontawesome.com/70fcd40144.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="assets\style.css">
+    <link rel="stylesheet" href="assets\style.css" />
   </head>
   <body>
     <script
@@ -37,26 +37,31 @@
         </div>
       </div>
     </div>
+    <!--SEARCH BAR AND SEARCH HISTORY-->
     <div class="container">
       <div class="row">
         <div class="col-4">
           <h3>Search for a City:</h3>
-          <p>INPUT AND SEARCH BUTTON FILLER</p>
-          <ul>
-            <li>
-              SEARCH HISTORY
-            </li>
-          </ul>
+          <input
+            type="text"
+            autocomplete="off"
+            class="search-box"
+            placeholder="Minneapolis"
+          />
         </div>
-        <div class="col-8">
-          <h2>CITY NAME</h2>
+        <!--CURRENT CITY-->
+        <div class="col-8 location">
+          <section class="location">
+            <div class="city">Minneapolis, MN</div>
+            <div class="date">August 5th, 2020</div>
+          </section>
           <!--Change degrees fahrenheit with javascript, figure out how to make degree *circle-->
-          <div class="temperature-value"><p>
-            Temperature:- *<span>F</span>
-          </p></div>
-          <p>Humidity: <span class="humidity"></span>%</p>
-          <p>Wind Speed: <span class="windSpeed"></span> MPH</p>
-          <p>UV Index: <span class="uv"></span></p>
+          <div class="current">
+            <div class="temp">15<span>°F</span></div>
+            <div class="humidity">50<span>%</span></div>
+            <div class="wind-speed">20<span>MPH</span></div>
+            <div class="uv"></div>
+          </div>
         </div>
       </div>
       <div class="row">
