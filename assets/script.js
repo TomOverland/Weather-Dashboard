@@ -16,89 +16,87 @@ $(document).ready(function () {
       "&appid=" +
       APIKey;
 
-    // Here we run our AJAX call to the OpenWeatherMap API
+    // I run an AJAX call to the OpenWeatherMap API
     $.ajax({
       url: queryURL,
       method: "GET",
-    })
-      // We store all of the retrieved data inside of an object called "response"
-      .then(function (response) {
-        console.log(response);
-        console.log(queryURL);
-        //clear out the divs and ids that the forecast will go into
-        $("#current").empty();
-        let date = moment().format("LL");
+    }).then(function (response) {
+      console.log(response);
+      console.log(queryURL);
+      //clear out the divs and ids that the forecast will go into
+      $("#current").empty();
+      let date = moment().format("LL");
 
-        // Transfer content to HTML
-        let cityNameEl = $("<h2>").text(response.name);
-        let displayDate = cityNameEl.append(" " + date);
-        let tempEl = $("<p>").text("Temperature: " + response.main.temp);
-        let humidityEl = $("<p>").text("Humidity: " + response.main.humidity);
-        let windEl = $("<p>").text("Humidity: " + response.wind.speed);
-        let currentWeather = response.weather[0].main;
+      // Transfer content to HTML
+      let cityNameEl = $("<h2>").text(response.name);
+      let displayDate = cityNameEl.append(" " + date);
+      let tempEl = $("<p>").text("Temperature: " + response.main.temp);
+      let humidityEl = $("<p>").text("Humidity: " + response.main.humidity);
+      let windEl = $("<p>").text("Humidity: " + response.wind.speed);
+      let currentWeather = response.weather[0].main;
 
-        // change the weather icon based on currentWeather variable
-        if (currentWeather === "Rain") {
-          let currentIcon = $("<img>").attr(
-            "src",
-            "http://openweathermap.org/img/wn/10d@2x.png"
-          );
-          currentIcon.attr("style", "height: 60px; width: 60px;");
-        } else if (currentWeather === "Snow") {
-          let currentIcon = $("<img>").attr(
-            "src",
-            "http://openweathermap.org/img/wn/13d@2x.png"
-          );
-          currentIcon.attr("style", "height: 60px; width: 60px;");
-        } else if (currentWeather === "Clouds") {
-          let currentIcon = $("<img>").attr(
-            "src",
-            "http://openweathermap.org/img/wn/02d@2x.png"
-          );
-          currentIcon.attr("style", "height: 60px; width: 60px;");
-        } else if (currentWeather === "Drizzle") {
-          let currentIcon = $("<img>").attr(
-            "src",
-            "http://openweathermap.org/img/wn/10d@2x.png"
-          );
-          currentIcon.attr("style", "height: 60px; width: 60px;");
-        } else if (currentWeather === "Clear") {
-          let currentIcon = $("<img>").attr(
-            "src",
-            "http://openweathermap.org/img/wn/01d@2x.png"
-          );
-          currentIcon.attr("style", "height: 60px; width: 60px;");
-        }
-        //create HTML div to append new elements to render on page....
-        var newDiv = $("<div>");
+      // change the weather icon based on currentWeather variable
+      if (currentWeather === "Rain") {
+        let currentIcon = $("<img>").attr(
+          "src",
+          "http://openweathermap.org/img/wn/10d@2x.png"
+        );
+        currentIcon.attr("style", "height: 60px; width: 60px;");
+      } else if (currentWeather === "Snow") {
+        let currentIcon = $("<img>").attr(
+          "src",
+          "http://openweathermap.org/img/wn/13d@2x.png"
+        );
+        currentIcon.attr("style", "height: 60px; width: 60px;");
+      } else if (currentWeather === "Clouds") {
+        let currentIcon = $("<img>").attr(
+          "src",
+          "http://openweathermap.org/img/wn/02d@2x.png"
+        );
+        currentIcon.attr("style", "height: 60px; width: 60px;");
+      } else if (currentWeather === "Drizzle") {
+        let currentIcon = $("<img>").attr(
+          "src",
+          "http://openweathermap.org/img/wn/10d@2x.png"
+        );
+        currentIcon.attr("style", "height: 60px; width: 60px;");
+      } else if (currentWeather === "Clear") {
+        let currentIcon = $("<img>").attr(
+          "src",
+          "http://openweathermap.org/img/wn/01d@2x.png"
+        );
+        currentIcon.attr("style", "height: 60px; width: 60px;");
+      }
+      //create HTML div to append new elements to render on page....
+      var newDiv = $("<div>");
 
-        newDiv.append(displayDate, currentIcon, tempEL, humidityEl, windEl);
+      newDiv.append(displayDate, currentIcon, tempEL, humidityEl, windEl);
 
-        $("#current").html(newDiv);
+      $("#current").html(newDiv);
 
-        //UV Index
-        let lat = response.coord.lat;
-        let lon = response.coord.lon;
-        let uvQueryURL =
-          "http://api.openweathermap.org/data/2.5/uvi/forecast?appid=" +
-          APIKey +
-          "&lat=" +
-          lat +
-          "&lon=" +
-          lon;
+      //UV Index
+      let lat = response.coord.lat;
+      let lon = response.coord.lon;
+      let uvQueryURL =
+        "http://api.openweathermap.org/data/2.5/uvi/forecast?appid=" +
+        APIKey +
+        "&lat=" +
+        lat +
+        "&lon=" +
+        lon;
 
-        $.ajax({
-          url: uvQueryURL,
-          method: "GET",
-        }).then(function (response) {
-          $("#uv").empty();
-          let uvResults = response.value;
-          let uvEl = $("<button class='btn bg-success'>").text(
-            "UV Index: " + response.value
-          );
-          $("#uv").html(uvEl);
-        });
+      $.ajax({
+        url: uvQueryURL,
+        method: "GET",
+      }).then(function (response) {
+        $("#uv").empty();
+        let uvResults = response.value;
+        let uvEl = $("<button class='btn bg-success'>").text(
+          "UV Index: " + response.value
+        );
+        $("#uv").html(uvEl);
       });
+    });
     //5 Day Forecast
     $.ajax({
       url: forecastQueryURL,
@@ -111,9 +109,7 @@ $(document).ready(function () {
       //create HTML for 5day forcast................
       for (var i = 0; i < results.length; i += 8) {
         // Creating a div
-        var fiveDayDiv = $(
-          "<div class='card shadow-lg text-white bg-primary mx-auto mb-10 p-2' style='width: 8.5rem; height: 11rem;'>"
-        );
+        var fiveDayDiv = $("<div>");
 
         //Storing the responses date temp and humidity.......
         var date = results[i].dt_txt;
@@ -172,12 +168,10 @@ $(document).ready(function () {
 
   //Search function
   $("#select-city").on("click", function (event) {
-    // Preventing the button from trying to submit the form......
     event.preventDefault();
-    // Storing the city name........
+    // Storing the city name
     var cityInput = $("#city-input").val().trim();
-
-    //save search term to local storage.....
+    //save search term to local storage
     var textContent = $(this).siblings("input").val();
     var storearr = [];
     storearr.push(textContent);
