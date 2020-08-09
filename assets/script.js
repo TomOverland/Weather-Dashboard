@@ -192,14 +192,14 @@ $(document).ready(function () {
   function pageLoad() {
     var lastSearch = JSON.parse(localStorage.getItem("cityName"));
     var searchDiv = $(
-      "<button class='btn border text-muted mt-1 bg-white rounded' style='width: 12rem;'>"
+      "<button class='btn border mt-1 text-dark bg-white rounded' style='width: 12rem;'>"
     ).text(lastSearch);
     var psearch = $("<div>");
     psearch.append(searchDiv);
     $("#search-history").prepend(psearch);
   }
 
-  //Event deligation...
+  //searches previous cities when user clicks the search history button associated with the city
   $("#search-history").on("click", ".btn", function (event) {
     event.preventDefault();
     console.log($(this).text());
