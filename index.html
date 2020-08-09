@@ -17,14 +17,16 @@
     <link rel="stylesheet" href="assets\style.css" />
   </head>
   <body>
-    <!-------------------NAVBAR AT TOP------------------------------>
+    <!-- Heading -->
     <div class="container-fluid text-center text-light bg-dark">
       <h1>Weather Dashboard</h1>
     </div>
-    <!------Search Input----------->
     <div class="container">
-        <div class="col-4">
-          <nav>
+      <div class="clearfix">
+        <div class="col-4 float-left">
+          <nav
+            class="navbar navbar-light bg-light shadow-lg p-3 mb-5 bg-white rounded"
+          >
             <h4>Search for a City:</h4>
             <form class="form-inline">
               <input
@@ -34,6 +36,7 @@
                 placeholder="Search"
                 aria-label="Search"
               />
+              <!-- Search Input -->
               <button
                 id="select-city"
                 class="btn btn-primary my-2 my-sm-0"
@@ -42,23 +45,25 @@
                 Search
               </button>
             </form>
-            <!-------- Search history ------->
             <form id="search-history" class="mt-1">
+              <!-- Search History -->
             </form>
           </nav>
         </div>
-        <!------- Current Weather -------->
-        <div class="col-8">
-          
-            <div id="current" class="card">
-              <div class="card-body"></div>
-            </div>
+        <div class="col-8 float-right">
+          <div
+            class="card bg-light text-dark p-2 rem shadow-lg p-3 mb-5 bg-white rounded"
+            style="width: 710; height: 19rem;"
+          >
+            <div id="current"></div>
+            <!-- Current Weather -->
             <div id="uv-display"></div>
           </div>
           <br />
-          <!------ Five Day Forecast ------->
           <h2>5-Day Forecast:</h2>
-          <div id="five-day" class="row"></div>
+          <div id="five-day" class="row">
+            <!-- Five Day Forecast -->
+          </div>
         </div>
       </div>
     </div>
