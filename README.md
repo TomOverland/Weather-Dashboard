@@ -1,30 +1,37 @@
 # Weather-Dashboard
+This weather dashboard allows you to search multiple cities and see the current weather outlook.
 
-https://tomoverland.github.io/Weather-Dashboard/
+## Live Site
+This is a link to the live site: https://tomoverland.github.io/Weather-Dashboard/
 
-06 Server-Side APIs: Weather Dashboard
-Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
-Use the OpenWeather API to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use localStorage to store any persistent data.
+## Demonstration of Application  
+![demonstration of application](gif link)
 
-User Story
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
+## Description  
+This weather dashboard allows you to search for a city using form inputs.  You are presented with current and future conditions for that city, and that city is added to search history.  
+The current weather information you are presented with includes the city's name, the date, an icon representation of the weather conditions, the temperature, the humitidy, the wind speed, and the UV Index.  
+The UV Index displays a color that indicates whther the conditions are favorable (green), moderate, or severe (red).  
+Below the current weather, there is a five day forecast for the selected city, which displays the date, an icon representation of the weather, the temperature, and the humitidy.  
+When you click on a city in the search history, you are again presented with current and future conditions for that city.  
+When you refresh the page or open the weather dashboard, you are presented with the last searched city forecast using your computer's local storage.
 
-Acceptance Criteria
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
-THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
-WHEN I open the weather dashboard
-THEN I am presented with the last searched city forecast
+## Built With
+HTML   
+JavaScript  
+Moment.js - Used the moment library to display dates and times in my JavaScript.  
+Bootstrap - Used to structure my HTML.  
+jQuery - Used to traverse the DOM and handle events.  
+OpenWeather API - Used to obtain current weather, five day forecast, and weather icons.
+
+## Installation
+If all files are kept in a single folder a web browser should be able to run the project.  
+You will need an internet connection.  
+
+## Credits
+I created this code based on the homework prompt created by Trilogy Education Services.
+
+## Contributing
+I completed the HTML and Javascript for this project.
 
 ## License
 
