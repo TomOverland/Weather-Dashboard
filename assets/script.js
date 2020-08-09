@@ -113,7 +113,7 @@ $(document).ready(function () {
       $("#five-day").empty();
       for (var i = 0; i < results.length; i += 8) {
         var fiveDayDiv = $(
-          "<div class='card text-white bg-primary mx-auto mb-10 p-2' style='width: 8.5rem; height: 11rem;'>"
+          "<div class='card text-white bg-primary mx-auto mb-10 p-2' style='width: 9rem; height: 11rem;'>"
         );
 
         //saving responses to variables
