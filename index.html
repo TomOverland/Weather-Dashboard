@@ -4,16 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Dashboard</title>
+    <!--Bootstrap Link-->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
       integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX"
       crossorigin="anonymous"
     />
-    <script
-      src="https://kit.fontawesome.com/70fcd40144.js"
-      crossorigin="anonymous"
-    ></script>
+    <!--Link to CSS-->
     <link rel="stylesheet" href="assets\style.css" />
   </head>
   <body>
@@ -24,9 +22,7 @@
     <div class="container">
       <div class="clearfix">
         <div class="col-4 float-left">
-          <nav
-            class="navbar navbar-light bg-light shadow-lg p-3 mb-5 bg-white rounded"
-          >
+          <nav class="navbar navbar-light p-3 mb-5 bg-white rounded border">
             <h4>Search for a City:</h4>
             <form class="form-inline">
               <input
@@ -52,8 +48,8 @@
         </div>
         <div class="col-8 float-right">
           <div
-            class="card bg-light text-dark p-2 rem p-3 mb-5 shadow-lg bg-white rounded"
-            style="width: 710; height: 19rem;"
+            class="card bg-white text-dark p-2 rem p-3 mb-5 rounded border"
+            style="width: 35rem; height: 19rem;"
           >
             <div id="current"></div>
             <!-- Current Weather -->

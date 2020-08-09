@@ -171,8 +171,8 @@ $(document).ready(function () {
     });
   }
   pageLoad();
-  //----------------------------------------Event handler for user city search-----------------------//
 
+  //click the "search" button to search for the city that the user entered into the input field
   $("#select-city").on("click", function (event) {
     event.preventDefault();
     //store the searched city name
