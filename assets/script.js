@@ -94,12 +94,21 @@ $(document).ready(function () {
         method: "GET",
       }).then(function (response) {
         $("#uv-display").empty();
-        var uvlresults = response.value;
-        //create HTML for new div
-        var uvEl = $("<button class='btn bg-success'>").text(
-          "UV Index: " + response.value
-        );
-
+        var uvResults = response.value;
+        //Create the colored reponses for UV Indexes, 1-2 low (green), 3-6 moderate (yellow), 7+ severe (red)
+        if (Math.floor(uvResults) < 3) {
+          var uvEl = $("<button class='btn btn-success'>").text(
+            "UV Index: " + response.value
+          );
+        } else if (Math.floor(uvResults) >= 3 && Math.floor(uvResults) < 7) {
+          var uvEl = $("<button class='btn btn-warning'>").text(
+            "UV Index: " + response.value
+          );
+        } else if (Math.floor(uvResults) >= 7) {
+          var uvEl = $("<button class='btn btn-danger'>").text(
+            "UV Index: " + response.value
+          );
+        }
         $("#uv-display").html(uvEl);
       });
     });
@@ -111,7 +120,9 @@ $(document).ready(function () {
     }).then(function (response) {
       var results = response.list;
       $("#five-day").empty();
-      for (var i = 0; i < results.length; i += 8) {
+      //loop through the forecast list array and display a single forecast entry, using the highest temp, from each of the five days
+      for (var i = 6; i < results.length; i += 8) {
+        //array index #s - 6, 14, 22, 30, 38
         var fiveDayDiv = $(
           "<div class='card text-white bg-primary mx-auto mb-10 p-2' style='width: 9rem; height: 11rem;'>"
         );
