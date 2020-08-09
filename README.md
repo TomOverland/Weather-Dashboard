@@ -10,7 +10,7 @@ This is a link to the live site: https://tomoverland.github.io/Weather-Dashboard
 ## Description  
 This weather dashboard allows you to search for a city using form inputs.  You are presented with current and future conditions for that city, and that city is added to search history.  
 The current weather information you are presented with includes the city's name, the date, an icon representation of the weather conditions, the temperature, the humitidy, the wind speed, and the UV Index.  
-The UV Index displays a color that indicates whther the conditions are favorable (green), moderate, or severe (red).  
+The UV Index displays a color that indicates whther the conditions are favorable (green), moderate (yellow), or severe (red).
 Below the current weather, there is a five day forecast for the selected city, which displays the date, an icon representation of the weather, the temperature, and the humitidy.  
 When you click on a city in the search history, you are again presented with current and future conditions for that city.  
 When you refresh the page or open the weather dashboard, you are presented with the last searched city forecast using your computer's local storage.
