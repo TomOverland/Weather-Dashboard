@@ -5,7 +5,7 @@ This weather dashboard allows you to search multiple cities and see the current 
 This is a link to the live site: https://tomoverland.github.io/Weather-Dashboard/
 
 ## Demonstration of Application  
-![demonstration of application](gif link)
+![demonstration of application](https://github.com/TomOverland/Weather-Dashboard/blob/master/assets/weather-dashboard-gif.gif)
 
 ## Description  
 This weather dashboard allows you to search for a city using form inputs.  You are presented with current and future conditions for that city, and that city is added to search history.  
