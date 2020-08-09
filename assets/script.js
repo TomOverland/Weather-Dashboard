@@ -4,17 +4,15 @@ $(document).ready(function () {
   //Search for Weather by City
   function searchCity(cityName) {
     // Building the URL needed to query the database
-    const queryURL =
-      "https://api.openweathermap.org/data/2.5/weather?q=" +
-      cityName +
-      "&appid=" +
-      APIKey;
-    // I'm using the query by city name API from openweathermap.org
-    const forecastQueryURL =
-      "https://api.openweathermap.org/data/2.5/forecast?q=" +
-      cityName +
-      "&appid=" +
-      APIKey;
+    function searchCity(cityName) {
+      var queryURL =
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
+        cityName +
+        "&units=imperial&appid=b5f00a2e7bd30a0e5a6b6aaacce4599a";
+      var forecastQueryURL =
+        "https://api.openweathermap.org/data/2.5/forecast?q=" +
+        cityName +
+        "&units=imperial&appid=b5f00a2e7bd30a0e5a6b6aaacce4599a";
 
     // I run an AJAX call to the OpenWeatherMap API
     $.ajax({
@@ -67,7 +65,7 @@ $(document).ready(function () {
         );
         currentIcon.attr("style", "height: 60px; width: 60px;");
       }
-      //create HTML div to append new elements to render on page....
+      //Create a div for elements to appear on page
       var newDiv = $("<div>");
 
       newDiv.append(displayDate, currentIcon, tempEL, humidityEl, windEl);
@@ -97,6 +95,7 @@ $(document).ready(function () {
         $("#uv").html(uvEl);
       });
     });
+    
     //5 Day Forecast
     $.ajax({
       url: forecastQueryURL,
