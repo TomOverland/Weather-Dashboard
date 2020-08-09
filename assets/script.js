@@ -100,7 +100,7 @@ $(document).ready(function () {
           "UV Index: " + response.value
         );
 
-        $("#uvl-display").html(uvEl);
+        $("#uv-display").html(uvEl);
       });
     });
 
