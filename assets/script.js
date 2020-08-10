@@ -3,17 +3,18 @@ $(document).ready(function () {
 
   //Search for weather by city name
   function searchCity(cityName) {
-    var queryURL =
+    const queryURL =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       cityName +
       "&units=imperial&appid=" +
       APIKey;
-    var forecastQueryURL =
+    const forecastQueryURL =
       "https://api.openweathermap.org/data/2.5/forecast?q=" +
       cityName +
       "&units=imperial&appid=" +
       APIKey;
 
+    //ajax call for current weather stats for a city
     $.ajax({
       url: queryURL,
       method: "GET",
@@ -25,12 +26,12 @@ $(document).ready(function () {
       let mainDate = moment().format("L");
 
       //save responses to variables that create html elements
-      var cityNameEl = $("<h2>").text(response.name);
-      var displayDate = cityNameEl.append(" " + mainDate);
-      var temperatureEl = $("<p>").text("Temperature: " + response.main.temp);
-      var humidityEl = $("<p>").text("Humidity: " + response.main.humidity);
-      var windEl = $("<p>").text("Wind Speed: " + response.wind.speed);
-      var weatherCurrent = response.weather[0].main;
+      let cityNameEl = $("<h2>").text(response.name);
+      let displayDate = cityNameEl.append(" " + mainDate);
+      let temperatureEl = $("<p>").text("Temperature: " + response.main.temp);
+      let humidityEl = $("<p>").text("Humidity: " + response.main.humidity);
+      let windEl = $("<p>").text("Wind Speed: " + response.wind.speed);
+      let weatherCurrent = response.weather[0].main;
 
       //weather icon changes based on the response of weather
       if (weatherCurrent === "Rain") {
@@ -65,7 +66,7 @@ $(document).ready(function () {
         currentIcon.attr("style", "height: 60px; width: 60px");
       }
       //adding a new div to display responses on index.html
-      var newDiv = $("<div>");
+      let newDiv = $("<div>");
 
       newDiv.append(
         displayDate,
@@ -79,9 +80,9 @@ $(document).ready(function () {
 
       //UV Index
 
-      var lat = response.coord.lat;
-      var lon = response.coord.lon;
-      var queryURLUV =
+      const lat = response.coord.lat;
+      const lon = response.coord.lon;
+      const queryURLUV =
         "https://api.openweathermap.org/data/2.5/uvi?&appid=" +
         APIKey +
         "&lat=" +
@@ -94,7 +95,7 @@ $(document).ready(function () {
         method: "GET",
       }).then(function (response) {
         $("#uv-display").empty();
-        var uvResults = response.value;
+        let uvResults = response.value;
         //Create the colored reponses for UV Indexes, 1-2 low (green), 3-6 moderate (yellow), 7+ severe (red)
         if (Math.floor(uvResults) < 3) {
           var uvEl = $("<button class='btn btn-success'>").text(
@@ -114,6 +115,7 @@ $(document).ready(function () {
     });
 
     //five day forecast
+
     $.ajax({
       url: forecastQueryURL,
       method: "GET",
@@ -123,22 +125,22 @@ $(document).ready(function () {
       //loop through the forecast list array and display a single forecast entry, using the highest temp, from each of the five days
       for (var i = 6; i < results.length; i += 8) {
         //array index #s - 6, 14, 22, 30, 38
-        var fiveDayDiv = $(
+        let fiveDayDiv = $(
           "<div class='card text-white bg-primary mx-auto mb-10 p-2' style='width: 9rem; height: 11rem;'>"
         );
 
         //saving responses to variables
-        var fiveDayDate = results[i].dt_txt;
-        var dateText = fiveDayDate.substr(0, 10);
-        var fiveDayTemp = results[i].main.temp;
-        var hum = results[i].main.humidity;
+        let fiveDayDate = results[i].dt_txt;
+        let dateText = fiveDayDate.substr(0, 10);
+        let fiveDayTempResults = results[i].main.temp;
+        let fiveDayHumResults = results[i].main.humidity;
 
         //adding the response variables to html elements
-        var h5date = $("<h5 class='card-title'>").text(dateText);
-        var pTemp = $("<p class='card-text'>").text("Temp: " + fiveDayTemp);
-        var pHum = $("<p class='card-text'>").text("Humidity " + hum);
+        let dateFiveDayEl = $("<h5 class='card-title'>").text(dateText);
+        let tempFiveDayEl = $("<p class='card-text'>").text("Temp: " + fiveDayTempResults);
+        let humFiveDayEl = $("<p class='card-text'>").text("Humidity " + fiveDayHumResults);
 
-        var weather = results[i].weather[0].main;
+        let weather = results[i].weather[0].main;
 
         if (weather === "Rain") {
           var icon = $("<img>").attr(
@@ -173,27 +175,29 @@ $(document).ready(function () {
         }
 
         //appending items to the five day forecast
-        fiveDayDiv.append(h5date);
+        fiveDayDiv.append(dateFiveDayEl);
         fiveDayDiv.append(icon);
-        fiveDayDiv.append(pTemp);
-        fiveDayDiv.append(pHum);
+        fiveDayDiv.append(tempFiveDayEl);
+        fiveDayDiv.append(humFiveDayEl);
         $("#five-day").append(fiveDayDiv);
       }
     });
   }
+  
+  //runs the searched city input
   pageLoad();
 
   //click the "search" button to search for the city that the user entered into the input field
   $("#select-city").on("click", function (event) {
     event.preventDefault();
     //store the searched city name
-    var cityInput = $("#city-input").val().trim();
+    let cityInput = $("#city-input").val().trim();
 
     //save search to local storage
-    var textContent = $(this).siblings("input").val();
-    var storearr = [];
-    storearr.push(textContent);
-    localStorage.setItem("cityName", JSON.stringify(storearr));
+    let textContent = $(this).siblings("input").val();
+    let savedArray = [];
+    savedArray.push(textContent);
+    localStorage.setItem("cityName", JSON.stringify(savedArray));
 
     searchCity(cityInput);
     pageLoad();
@@ -201,13 +205,13 @@ $(document).ready(function () {
 
   //load stored items
   function pageLoad() {
-    var lastSearch = JSON.parse(localStorage.getItem("cityName"));
-    var searchDiv = $(
+    let lastSearch = JSON.parse(localStorage.getItem("cityName"));
+    let searchDiv = $(
       "<button class='btn border mt-1 text-dark bg-white rounded' style='width: 12rem;'>"
     ).text(lastSearch);
-    var psearch = $("<div>");
-    psearch.append(searchDiv);
-    $("#search-history").prepend(psearch);
+    let previousSearchEl = $("<div>");
+    previousSearchEl.append(searchDiv);
+    $("#search-history").prepend(previousSearchEl);
   }
 
   //searches previous cities when user clicks the search history button associated with the city
